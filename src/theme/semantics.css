@@ -1,0 +1,38 @@
+/*
+  Colors for vertex and edge roles. light-dark() follows the page color scheme.
+  The theme toggle sets data-theme on <html>, which overrides the system choice.
+*/
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+:root {
+  --sem-node-unvisited-fill: light-dark(#f5f5f4, #292524);
+  --sem-node-unvisited-stroke: light-dark(#a8a29e, #a8a29e);
+  --sem-node-unvisited-text: light-dark(#44403c, #f5f5f4);
+
+  --sem-node-frontier-fill: light-dark(#fef3c7, #78350f);
+  --sem-node-frontier-stroke: light-dark(#d97706, #fbbf24);
+  --sem-node-frontier-text: light-dark(#78350f, #fef3c7);
+
+  --sem-node-current-fill: light-dark(#dbeafe, #1e3a8a);
+  --sem-node-current-stroke: light-dark(#2563eb, #93c5fd);
+  --sem-node-current-text: light-dark(#1e3a8a, #dbeafe);
+
+  --sem-node-visited-fill: light-dark(#d1fae5, #064e3b);
+  --sem-node-visited-stroke: light-dark(#059669, #6ee7b7);
+  --sem-node-visited-text: light-dark(#065f46, #d1fae5);
+
+  --sem-node-source-fill: light-dark(#bbf7d0, #14532d);
+  --sem-node-source-stroke: light-dark(#16a34a, #86efac);
+  --sem-node-source-text: light-dark(#14532d, #bbf7d0);
+
+  --sem-edge-default-stroke: light-dark(#78716c, #a8a29e);
+  --sem-edge-tree-stroke: light-dark(#059669, #34d399);
+  --sem-edge-rejected-stroke: light-dark(#a8a29e, #78716c);
+}
