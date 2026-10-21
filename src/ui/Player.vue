@@ -148,9 +148,8 @@ onUnmounted(() => window.removeEventListener("keydown", onKey));
       </div>
     </div>
     <p class="mt-2 text-xs text-[var(--app-muted)]">
-      Arrange lets vertices repel and edges tug until the drawing settles. Drag a vertex while
-      that runs to pin it. When an algorithm needs a source, click a vertex to set it. Keys: left,
-      right, space, home, end.
+      Arrange lets vertices repel and edges tug until the drawing settles. When an algorithm
+      needs a source, click a vertex to set it. Keys: left, right, space, home, end.
     </p>
   </footer>
 </template>

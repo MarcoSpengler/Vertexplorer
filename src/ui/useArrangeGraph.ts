@@ -1,5 +1,5 @@
 import { ref, watch } from "vue";
-import { hold, startLayout, type Layout } from "../core/layout/force";
+import { startLayout, type Layout } from "../core/layout/force";
 import { useAppStore } from "../store/useAppStore";
 
 /**
@@ -30,7 +30,6 @@ export function useArrangeGraph() {
     }
     layout = next;
     arranging.value = true;
-    holdCurrent(next);
     next.on("end", () => {
       if (layout !== next) {
         return;
@@ -40,33 +39,10 @@ export function useArrangeGraph() {
     });
   }
 
-  function holdCurrent(current: Layout) {
-    const id = store.draggingId;
-    const node = id === null ? undefined : store.graph.nodes.find((item) => item.id === id);
-    if (id === null || node === undefined) {
-      hold(current, null);
-      return;
-    }
-    hold(current, id, node.x, node.y);
-  }
-
   watch(
     () => [store.algorithmId, store.exampleId] as const,
     () => {
       stop();
-    },
-  );
-
-  watch(
-    () => {
-      const id = store.draggingId;
-      const node = id === null ? undefined : store.graph.nodes.find((item) => item.id === id);
-      return [id, node?.x, node?.y] as const;
-    },
-    () => {
-      if (layout !== null) {
-        holdCurrent(layout);
-      }
     },
   );
 

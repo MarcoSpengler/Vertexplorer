@@ -28,7 +28,6 @@ interface AppState extends LoadedExample {
   playing: boolean;
   speedId: SpeedId;
   theme: ThemeMode;
-  draggingId: NodeId | null;
 }
 
 function pageTheme(): ThemeMode {
@@ -94,7 +93,6 @@ export const useAppStore = defineStore("app", {
       steps: initial.steps,
       validationErrors: initial.validationErrors,
       stepIndex: 0,
-      draggingId: null,
       playing: false,
       speedId: "normal",
       theme: pageTheme(),
@@ -152,12 +150,6 @@ export const useAppStore = defineStore("app", {
           return next === undefined ? node : { ...node, x: next.x, y: next.y };
         }),
       };
-    },
-    setDragging(draggingId: NodeId | null) {
-      if (this.draggingId === draggingId) {
-        return;
-      }
-      this.draggingId = draggingId;
     },
     setStep(index: number) {
       const last = Math.max(this.steps.length - 1, 0);

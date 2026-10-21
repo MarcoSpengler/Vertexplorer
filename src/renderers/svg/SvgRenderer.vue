@@ -72,7 +72,6 @@ function onNodePointerDown(event: PointerEvent, node: GraphNode) {
   if (target instanceof Element) {
     target.setPointerCapture(event.pointerId);
   }
-  store.setDragging(node.id);
   drag = {
     pointerId: event.pointerId,
     id: node.id,
@@ -103,7 +102,6 @@ function onPointerUp(event: PointerEvent) {
   }
   const finished = drag;
   drag = null;
-  store.setDragging(null);
   if (!finished.moved && props.needsSource) {
     store.setSource(finished.id);
   }

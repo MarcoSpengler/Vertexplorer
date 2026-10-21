@@ -43,7 +43,7 @@ function springs(graph: Graph, nodes: readonly SimNode[]) {
 
 /**
  * Runs d3-force on a copy of the vertices. `onMove` receives coordinates each frame.
- * Call `hold` to pin the vertex under the pointer, and `layout.stop()` to cancel.
+ * Call `layout.stop()` to cancel.
  */
 export function startLayout(graph: Graph, onMove: (positions: { id: NodeId; x: number; y: number }[]) => void): Layout | null {
   const nodes: SimNode[] = graph.nodes.map((node) => ({ id: node.id, x: node.x, y: node.y }));
@@ -70,17 +70,4 @@ export function startLayout(graph: Graph, onMove: (positions: { id: NodeId; x: n
     .on("tick", () => {
       onMove(nodes.map((node) => ({ id: node.id, x: node.x ?? 0, y: node.y ?? 0 })));
     });
-}
-
-/** Fix one vertex at a point. Pass null to let every vertex move again. */
-export function hold(layout: Layout, id: NodeId | null, x = 0, y = 0) {
-  for (const node of layout.nodes()) {
-    if (node.id === id) {
-      node.fx = x;
-      node.fy = y;
-    } else {
-      node.fx = null;
-      node.fy = null;
-    }
-  }
 }
